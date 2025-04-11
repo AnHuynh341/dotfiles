@@ -29,7 +29,7 @@ alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --va
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
-
+alias prand="~/push_random.sh"
 
 # Set up fzf key bindings and fuzzy completion
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
@@ -41,7 +41,7 @@ alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {
 
 nvimfzf() {
   local dir
-  dir=$(find /mnt/localdisk/Document -type d | fzf --prompt="Choose folder: ") || return
+  dir=$(find /mnt/localdisk/Document -type d -not -path "/mnt/localdisk/Document/offload_fromlinux*" | fzf --prompt="Choose folder: ") || return
   cd "$dir" && nvim .
 }
 
@@ -98,7 +98,22 @@ ncm() {
 
 
 mpv() {
-    command mpv "$@" &>/dev/null &
+  if [ "$#" -eq 0 ]; then
+    local file
+    file=$(find /mnt/localdisk/Video/ -type f \( -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.avi' \) | fzf --height=40% --layout=reverse --prompt="🎬 Pick a video: ")
+    if [ -n "$file" ]; then
+      echo " 🎞️ Now playing: $file"
+      # Print stream info
+      mpv --vo=null --ao=null --frames=0 "$file" 2>&1 | grep -E '^● (Video|Audio|Subs)' || echo "ℹ️ No stream info found."
+
+      # Detach and play
+      nohup mpv --no-terminal "$file" > /dev/null 2>&1 &
+      disown
+      #echo "Detached from terminal"
+    fi
+  else
+    command mpv "$@"
+  fi
 }
 
 
