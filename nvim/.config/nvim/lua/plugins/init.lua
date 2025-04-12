@@ -7,6 +7,8 @@ return {
   { import = "plugins.theme" },
   { import = "plugins.lualine" },
   { import = "plugins.lspsaga" },
-  
+  { import = "plugins.symbols-outline" },
+  { import = "plugins.nvim-autopairs" },
+
 }
 

@@ -44,3 +44,20 @@ vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Pre
 vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Diagnostic" })
 
 
+-- Normal mode navigation between splits
+-- Set these in your keymaps file or init.lua
+local opts = { noremap = true, silent = true }
+
+-- Normal mode navigation between splits
+-- Normal mode: Move between splits as usual
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)  -- Move left
+vim.keymap.set('n', '<C-j>', '<C-w>j', opts)  -- Move down
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)  -- Move up
+vim.keymap.set('n', '<C-l>', '<C-w>l', opts)  -- Move right
+
+-- Terminal mode: Exit insert mode and move between splits
+vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]], opts)  -- Move left in terminal mode
+vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], opts)  -- Move down in terminal mode
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], opts)  -- Move up in terminal mode
+vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]], opts)  -- Move right in terminal mode
+

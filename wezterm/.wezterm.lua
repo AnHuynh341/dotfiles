@@ -18,7 +18,7 @@ return {
   font_size = 12,
   color_scheme = "Dracula", -- Or "Dracula", "Gruvbox Dark", etc.
   colors = {
-    background = "#000000",  -- override just the background
+    background = "#000025",  -- override just the background
   },
   enable_tab_bar = false,           -- Hide tabs if you prefer a clean look
   use_fancy_tab_bar = false,

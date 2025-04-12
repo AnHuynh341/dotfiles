@@ -14,12 +14,12 @@ return {
       vim.cmd.colorscheme("cyberdream")
 
       -- Pitch black background overrides
-      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000000" })
+      vim.api.nvim_set_hl(0, "Normal", { bg = "#000020" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000020" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0d0d0d" })
-      vim.api.nvim_set_hl(0, "VertSplit", { bg = "#0c0c0c" })
-      vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#0d0d0d" })
-      vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000" })
+      vim.api.nvim_set_hl(0, "VertSplit", { bg = "#0c0c9c" })
+     vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#0d0d0d" })
+     vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000" })
       vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#0a0a0a" })
     end,
   },

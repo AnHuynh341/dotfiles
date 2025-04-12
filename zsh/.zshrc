@@ -62,38 +62,47 @@ ncm() {
 
     mpc add "$rel_path" && mpc play
 
-  if [ -n "$TMUX" ]; then
-    # Count the number of panes in the current window
-    local num_panes
-    num_panes=$(tmux list-panes | wc -l)
+    if [ -n "$TMUX" ]; then
+      # Count the number of panes
+      local num_panes
+      num_panes=$(tmux list-panes | wc -l)
 
-    # Check if btop is already running in any pane
-    if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^ncmpcpp$"; then
-      if [ "$num_panes" -eq 1 ]; then
-        # Only one pane: split horizontally
-        tmux split-window -h -d "ncmpcpp"
+      # Launch ncmpcpp if not already running
+      if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^ncmpcpp$"; then
+        if [ "$num_panes" -eq 1 ]; then
+          tmux split-window -h -d "ncmpcpp"
+        else
+          local right_pane
+          right_pane=$(tmux list-panes -F '#{pane_id} #{pane_left}' | sort -k2 -n | tail -n1 | cut -d' ' -f1)
+          tmux split-window -v -d -t "$right_pane" "ncmpcpp"
+        fi
       else
-        # More than one pane: find the rightmost pane and split vertically from there
-        local right_pane
-        right_pane=$(tmux list-panes -F '#{pane_id} #{pane_left}' | sort -k2 -n | tail -n1 | cut -d' ' -f1)
-
-        # Now split vertically from that rightmost pane
-        tmux split-window -v -d -t "$right_pane" "ncmpcpp"
+        echo "ncmpcpp is already running in tmux"
       fi
-    else
-      echo "ncmpcpp is already running in tmux"
-    fi
-  else
-    # Outside tmux: check if kitty has a visible btop process
-    if ! pgrep -x "kitty" -a | grep -q "ncmpcpp"; then
-      kitty --class=btop -e btop &
-    else
-      echo "ncmpcpp is already running in kitty"
-    fi
-  fi
 
+      # Now check and launch cava if not running
+
+         if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^cava$"; then
+        local bottom_pane
+        bottom_pane=$(tmux list-panes -F '#{pane_id} #{pane_top}' | sort -k2 -nr | head -n1 | cut -d' ' -f1)
+        tmux split-window -v -d -t "$bottom_pane" "cava"
+      else
+        echo "cava is already running in tmux"
+      fi
+
+    else
+      # Outside tmux fallback
+      if ! pgrep -x "ncmpcpp" > /dev/null; then
+        kitty --class=ncmpcpp -e ncmpcpp &
+      fi
+      if ! pgrep -x "cava" > /dev/null; then
+        kitty --class=cava -e cava &
+      fi
+    fi
   } &>/dev/null
 }
+
+
 
 
 

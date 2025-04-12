@@ -19,7 +19,7 @@ $julia\
 $nodejs\
 $nim\
 $rust\
-$scala\
+$cmd_duration\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_contextd\
 [](fg:#06969A bg:#33658A)\
@@ -50,7 +50,7 @@ disabled = true # Disabled by default
 [directory]
 style = "bg:#DA627D"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 5
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
@@ -143,7 +143,14 @@ format = '[ $symbol ($version) ]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
-format = '[ ⏱  $time ]($style)'
+format = '[ $time ]($style)'
+
+[cmd_duration]
+min_time = 0         # Show command duration if it takes more than 500ms
+show_milliseconds = true
+style = "bg:#86BBD8"
+format = "[ ⏱ $duration ]($style)"
+
 
 
 [character]
