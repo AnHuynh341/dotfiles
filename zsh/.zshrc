@@ -28,7 +28,10 @@ alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disow
 alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
-alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+#alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+
+
 alias prand="~/push_random.sh"
 
 # Set up fzf key bindings and fuzzy completion
