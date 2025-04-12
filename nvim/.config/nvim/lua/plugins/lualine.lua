@@ -9,7 +9,7 @@ return {
       normal = {
         a = { fg = "#000000", bg = "#00ffff", gui = "bold" }, -- cyan
         b = { fg = "#ffffff", bg = "#005f87" },               -- deep blue
-        c = { fg = "#00ffff", bg = "#121212" },                 
+        c = { fg = "#00ffff", bg = "NONE" },                 
       },
       insert = {
         a = { fg = "#220536", bg = "#ffff00", gui = "bold" }, -- green

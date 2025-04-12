@@ -39,9 +39,9 @@ alias prand="~/push_random.sh"
 
 
 
-nvimfzf() {
+nvimdoc() {
   local dir
-  dir=$(find /mnt/localdisk/Document -type d -not -path "/mnt/localdisk/Document/offload_fromlinux*" | fzf --prompt="Choose folder: ") || return
+  dir=$( find /mnt/localdisk/Document -mindepth 1 -maxdepth 2 -type d -not -path "/mnt/localdisk/Document/offload_fromlinux*" | fzf --prompt="Choose folder: " ) || return
   cd "$dir" && nvim .
 }
 
