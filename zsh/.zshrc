@@ -6,6 +6,13 @@ esac
 
 export PATH
 
+#zsh autosuggest setup
+export MY_ZSH_PLUGINS=~/dotfiles/zsh/plugins 
+source $MY_ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
