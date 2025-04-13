@@ -61,3 +61,5 @@ vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], opts)  -- Move down in termin
 vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], opts)  -- Move up in terminal mode
 vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]], opts)  -- Move right in terminal mode
 
+-- Next buffer (like tab)
+vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>', { desc = 'Next buffer' })
