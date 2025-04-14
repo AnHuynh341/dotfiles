@@ -56,7 +56,7 @@ nvimdoc() {
 }
 
 
-ncm() {
+ncmp() {
   {
     local music_dir="/mnt/localdisk/Audio"
     local file rel_path
@@ -70,7 +70,12 @@ ncm() {
       rel_path="${file#"$music_dir/"}"
     fi
 
-    mpc add "$rel_path" && mpc play
+   	# mpc add "$rel_path" && mpc play
+	# Add to the queue and fetch its position
+	mpc add "$rel_path"
+	song_pos=$(mpc playlist | wc -l)
+	mpc play "$song_pos"
+
 
     if [ -n "$TMUX" ]; then
       # Count the number of panes
@@ -103,10 +108,12 @@ ncm() {
     else
       # Outside tmux fallback
       if ! pgrep -x "ncmpcpp" > /dev/null; then
-        kitty --class=ncmpcpp -e ncmpcpp &
+       # kitty --class=ncmpcpp -e ncmpcpp &
+	wezterm start --class ncmpcpp -- ncmpcpp &
       fi
       if ! pgrep -x "cava" > /dev/null; then
-        kitty --class=cava -e cava &
+       # kitty --class=cava -e cava &
+        wezterm start --class cava -- cava &
       fi
     fi
   } &>/dev/null
@@ -168,6 +175,61 @@ btop() {
     fi
   fi
 }
+
+
+
+
+
+ncm() {
+  {
+ 
+	  mpc play
+
+    if [ -n "$TMUX" ]; then
+      # Count the number of panes
+      local num_panes
+      num_panes=$(tmux list-panes | wc -l)
+
+      # Launch ncmpcpp if not already running
+      if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^ncmpcpp$"; then
+        if [ "$num_panes" -eq 1 ]; then
+          tmux split-window -h -d "ncmpcpp"
+        else
+          local right_pane
+          right_pane=$(tmux list-panes -F '#{pane_id} #{pane_left}' | sort -k2 -n | tail -n1 | cut -d' ' -f1)
+          tmux split-window -v -d -t "$right_pane" "ncmpcpp"
+        fi
+      else
+        echo "ncmpcpp is already running in tmux"
+      fi
+
+      # Now check and launch cava if not running
+
+         if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^cava$"; then
+        local bottom_pane
+        bottom_pane=$(tmux list-panes -F '#{pane_id} #{pane_top}' | sort -k2 -nr | head -n1 | cut -d' ' -f1)
+        tmux split-window -v -d -t "$bottom_pane" "cava"
+      else
+        echo "cava is already running in tmux"
+      fi
+
+    else
+      # Outside tmux fallback
+      if ! pgrep -x "ncmpcpp" > /dev/null; then
+       # kitty --class=ncmpcpp -e ncmpcpp &
+	wezterm start --class ncmpcpp -- ncmpcpp &
+      fi
+      if ! pgrep -x "cava" > /dev/null; then
+       # kitty --class=cava -e cava &
+        wezterm start --class cava -- cava &
+      fi
+    fi
+  } &>/dev/null
+}
+
+
+
+
 
 
 

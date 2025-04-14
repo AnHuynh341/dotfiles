@@ -16,12 +16,12 @@ return {
   },
 
   font_size = 12,
-  color_scheme = "Dracula", -- Or "Dracula", "Gruvbox Dark", etc.
+  color_scheme = "Dracula", --"Dracula"/"Gruvbox Dark"
   colors = {
     background = "#000025",  -- override just the background
   },
-  window_background_opacity = 0.95,  -- 1.0 is fully opaque, 0.0 is fully transparent
-  enable_tab_bar = false,           -- Hide tabs if you prefer a clean look
+  window_background_opacity = 0.90,  -- 1.0 = fully opaque
+  enable_tab_bar = false,
   use_fancy_tab_bar = false,
   hide_mouse_cursor_when_typing = false,
 
