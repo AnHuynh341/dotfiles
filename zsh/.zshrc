@@ -230,7 +230,19 @@ ncm() {
 
 
 
+ncmo() {
+	     # Outside tmux fallback
+      if ! pgrep -x "ncmpcpp" > /dev/null; then
+       # kitty --class=ncmpcpp -e ncmpcpp &
+	wezterm start --class ncmpcpp -- ncmpcpp &
+      fi
+      if ! pgrep -x "cava" > /dev/null; then
+       # kitty --class=cava -e cava &
+       sleep 0.75
+        wezterm start --class cava -- cava &
+      fi
 
+}
 
 
 

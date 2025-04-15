@@ -20,7 +20,7 @@ return {
   colors = {
     background = "#000025",  -- override just the background
   },
-  window_background_opacity = 0.90,  -- 1.0 = fully opaque
+  window_background_opacity = 0.80,  -- 1.0 = fully opaque
   enable_tab_bar = false,
   use_fancy_tab_bar = false,
   hide_mouse_cursor_when_typing = false,
