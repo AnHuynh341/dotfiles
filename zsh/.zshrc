@@ -245,6 +245,40 @@ ncmo() {
 }
 
 
+ncmop() {
+  {
+    local music_dir="/mnt/localdisk/Audio"
+    local file rel_path
+
+    if [ -n "$1" ]; then
+      rel_path="$1"
+    else
+      file=$(find "$music_dir" \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.dsf" -o -iname "*.mka" \) -type f 2>/dev/null | fzf)
+
+      [ -z "$file" ] && return
+      rel_path="${file#"$music_dir/"}"
+    fi
+
+   	# mpc add "$rel_path" && mpc play
+	# Add to the queue and fetch its position
+	mpc add "$rel_path"
+	song_pos=$(mpc playlist | wc -l)
+	mpc play "$song_pos"
+
+      if ! pgrep -x "ncmpcpp" > /dev/null; then
+       # kitty --class=ncmpcpp -e ncmpcpp &
+	wezterm start --class ncmpcpp -- ncmpcpp &
+      fi
+
+      if ! pgrep -x "cava" > /dev/null; then
+       # kitty --class=cava -e cava &
+        wezterm start --class cava -- cava &
+      fi
+  } &>/dev/null
+}
+
+
+
 
 
 
