@@ -256,8 +256,8 @@ export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
 export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
 export PATH=$ANDROID_SDK_ROOT/build-tools/34.0.0:$PATH
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-
+#export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk
 
 
 # Input method configurations for fcitx
