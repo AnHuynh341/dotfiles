@@ -295,7 +295,7 @@ gitpush() {
   git add .
 
   # Prompt for commit message
-   echo -n  "Commit message: "
+   echo -ne "\033[1;32m Commit message: \033[0m"
   read msg 
 
   if [[ -z "$msg" ]]; then
