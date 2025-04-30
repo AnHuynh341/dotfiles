@@ -291,22 +291,29 @@ fi
 
 
 gitpush() {
-  echo "Staging all changes..."
+  echo " Staging all changes..."
   git add .
 
-  # Prompt for commit message
-   echo -ne "\033[1;32m Commit message: \033[0m"
-  read msg 
+  # Prompt in light green
+  echo -ne "\033[1;32m  Commit message: \033[0m"
+  read msg
 
   if [[ -z "$msg" ]]; then
-    echo "Commit message cannot be empty. Aborting."
+    echo -e "\033[1;31m Commit message cannot be empty. Aborting.\033[0m"
     return 1
   fi
 
-  echo "Committing..."
+  echo " Committing..."
   git commit -m "$msg" || return
 
-  echo "Pushing to main..."
-  git push origin main
+  # Get current branch name
+  branch=$(git symbolic-ref --short HEAD)
+  if [[ -z "$branch" ]]; then
+    echo -e "\033[1;31m❗ Could not detect the current branch. Aborting.\033[0m"
+    return 1
+  fi
+
+  echo -e "\033[1;34m Pushing to '$branch'...\033[0m"
+  git push origin "$branch"
 }
 
