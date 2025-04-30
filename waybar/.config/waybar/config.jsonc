@@ -1,6 +1,7 @@
 {
   "layer": "top",
     "position": "top",
+    "height": 42,
     "margin-bottom": 0,
     "modules-left": [
       "clock",
@@ -65,17 +66,17 @@
       "format": " {bandwidthDownBits}  {bandwidthUpBits}",
     },
     "temperature": {
-      "format": "{icon} {temperatureC}°C",
+      "format": " {icon}  {temperatureC}°C ",
       "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       "critical-threshold": 80,
       "format-icons": ["", "", ""]
     },
     "memory": {
-      "format": " {}%",
+      "format": "   {}% ",
       "tooltip": "false"
     },
     "cpu": {
-      "format": " {usage}%",
+      "format": "   {usage}% ",
       "tooltip": "false"
     },
     "custom/powermenu": {
@@ -84,8 +85,8 @@
       "on-click": "exec wlogout -p layer-shell",
     },
     "pulseaudio": {
-      "format": "{volume}% {icon}",
-      "format-bluetooth": "{volume}% {icon}",
+      "format": " {icon} {volume}% ",
+      "format-bluetooth": "  {volume}% ",
       "format-muted": "",
       "format-icons": {
           "headphone": "",
@@ -101,7 +102,7 @@
     },
     "clock": {
       //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",
-      "format": "{:%H:%M}",
+      "format": " {:%H:%M} ",
       "interval": 60,
       "tooltip": true,
       "tooltip-format": "{:%d %B %H:%M}"
