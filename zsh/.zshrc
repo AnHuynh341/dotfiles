@@ -289,3 +289,24 @@ if [[ -z $TMUX ]]; then
 fi
 
 
+
+gitpush() {
+  echo "Staging all changes..."
+  git add .
+
+  # Prompt for commit message
+   echo -n  "Commit message: "
+  read msg 
+
+  if [[ -z "$msg" ]]; then
+    echo "Commit message cannot be empty. Aborting."
+    return 1
+  fi
+
+  echo "Committing..."
+  git commit -m "$msg" || return
+
+  echo "Pushing to main..."
+  git push origin main
+}
+
