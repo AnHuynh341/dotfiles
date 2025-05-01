@@ -231,6 +231,7 @@ ncm() {
 
 
 ncmo() {
+		mpc play 
 	     # Outside tmux fallback
       if ! pgrep -x "ncmpcpp" > /dev/null; then
        # kitty --class=ncmpcpp -e ncmpcpp &
@@ -351,3 +352,12 @@ gitpush() {
   git push origin "$branch"
 }
 
+
+yaz() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
