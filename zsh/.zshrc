@@ -280,7 +280,7 @@ ncmop() {
 
 
 
-
+export EDITOR="nvim"
 
 
 # Set up environment variables for development tools
