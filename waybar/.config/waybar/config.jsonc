@@ -103,7 +103,7 @@
     },
     "clock": {
       //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",
-      "format": " {:%d %B | %H:%M} ",
+      "format": " {:%B %d | %H:%M} ",
       "interval": 60,
       "tooltip": false,
   //    "tooltip-format": "{:%d %B %H:%M}"
