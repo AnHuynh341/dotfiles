@@ -29,7 +29,7 @@ unset rc
 
 # Aliases (Zsh-specific formatting)
 #alias ls='eza -lah --icons --group-directories-first --no-user --no-permissions --header  --color=always '
-# alias btop='kitty -e btop &'
+alias btop=' wezterm start -- btop &'
 alias ls=" eza -a --icons --group-directories-first --grid --color=always"
 alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
 alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
@@ -144,7 +144,7 @@ mpv() {
 
 
 
-btop() {
+btopp() {
   if [ -n "$TMUX" ]; then
     # Count the number of panes in the current window
     local num_panes
