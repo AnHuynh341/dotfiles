@@ -25,7 +25,7 @@
       "spacing": 15
     },
     "hyprland/window": {
-	 "max-length": 80,
+	 "max-length": 90,
       "format": " {} ",
       "rewrite": {
           "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
