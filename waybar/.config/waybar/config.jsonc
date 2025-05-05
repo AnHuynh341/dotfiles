@@ -22,9 +22,10 @@
     ],
     "tray": {
       "icon-size": 22,
-      "spacing": 10
+      "spacing": 15
     },
     "hyprland/window": {
+	 "max-length": 80,
       "format": " {} ",
       "rewrite": {
           "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
@@ -41,44 +42,44 @@
       "max-length": 8,
       "tooltip": true
     },
-    "hyprland/workspaces": {
-      "format": "{icon}",
-      "format-icons": {
-        "1": "󰲠",
-        "2": "󰲢",
-        "3": "󰲤",
-        "4": "󰲦",
-        "5": "󰲨",
-        "6": "󰲪",
-        "7": "󰲬",
-        "8": "󰲮",
-        "9": "󰲰",
-        "10": "󰿬",
-        "-99": "",
-        "active": "",
-        "default": ""
-      }
+
+"hyprland/workspaces": {
+      "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+      "persistent-workspaces": {
+    "*": [1, 2, 3, 4, 5] 
+      },
+    "format-icons": {
+         "urgent": "",
+      "active": "",
+      "default": ""
     },
+  },
+
     "network": {
       "interface": "wlo1",
       "tooltip-format-ethernet": "{ifname} ",
-      "interval": 2,
+      "interval": 1,
       "format": " {bandwidthDownBits}  {bandwidthUpBits}",
     },
     "temperature": {
       "format": " {icon}  {temperatureC}°C ",
       "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       "critical-threshold": 80,
-      "format-icons": ["", "", ""]
+      "format-icons": ["", "", ""],
+       "interval": 3,
     },
     "memory": {
       "format": "   {}% ",
-      "tooltip": "false"
+      "tooltip": "false",
+        "interval": 5,
     },
     "cpu": {
       "format": "   {usage}% ",
       "tooltip": "false",
-        "interval": 5,
+        "interval": 2,
     },
     "custom/powermenu": {
       "format": "",

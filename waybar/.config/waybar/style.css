@@ -1,3 +1,4 @@
+
 * {
   border: none;
   border-radius: 0;
@@ -12,15 +13,45 @@
   font-family: "JetBrainsMono Nerd Font";
 }
 
+#workspaces {
+    background: #eeeeef;
+    margin: 5px 1px 6px 1px;
+    padding: 0px 1px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 1.0;
+    font-size: 16px;
+    color: #ced6d6;
+}
+
 #workspaces button {
-  padding: 0 5px;
-  color: #eeeeef;
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: #c3c9c9;
+    
+    transition: all 0.3s ease-in-out;
 }
-/* Fix: active workspace doesn't show up */
-/* #workspaces button.focused { */
+
 #workspaces button.active {
-  color: #fa5aa4;
+    color: #161617;
+    background: #989a9e;
+    border-radius: 15px;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
 }
+
+#workspaces button:hover {
+    color:#f0f5f5;
+    background: #88888c;
+    border-radius: 15px;
+  
+}
+
 
 #custom-powermenu,
 #cpu,
@@ -56,6 +87,8 @@
   color: #e06c75;
   padding-right: 11px;
   margin-right: 8px;
+    min-width: 20px;
+     font-size: 16px;
 }
 
 #scratchpad {
