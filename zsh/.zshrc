@@ -38,7 +38,6 @@ alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 #alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
-
 alias prand="~/push_random.sh"
 
 # Set up fzf key bindings and fuzzy completion
@@ -360,4 +359,10 @@ yaz() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+
+update() {
+  echo -e "\033[1;34m Checking for updates...\033[0m"
+  sudo dnf upgrade --refresh
 }
