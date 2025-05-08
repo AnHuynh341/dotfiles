@@ -3,6 +3,7 @@
     "position": "top",
     "height": 42,
     "margin-bottom": 0,
+    "margin-top": 0,
     "modules-left": [
       "clock",
       "hyprland/workspaces",
@@ -16,13 +17,14 @@
       "network",
       "temperature",
       "cpu",
+      "memory",
       "battery",
       "pulseaudio",
       "custom/powermenu",
     ],
     "tray": {
-      "icon-size": 22,
-      "spacing": 15
+      "icon-size": 19,
+      "spacing": 12
     },
     "hyprland/window": {
 	 "max-length": 90,
@@ -87,7 +89,7 @@
 	},
 
     "memory": {
-      "format": " {}% ",
+      "format": "   {}% ",
       "tooltip": "false",
         "interval": 5,
     },
