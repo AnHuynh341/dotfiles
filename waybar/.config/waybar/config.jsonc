@@ -26,13 +26,24 @@
       "icon-size": 20,
       "spacing": 12
     },
-    "hyprland/window": {
-	 "max-length": 90,
-   "format": " {} ", 
-
-
-      "separate-outputs": false
-    },
+////////////////////////////////////////////////    
+"hyprland/window": {
+  "max-length": 90,
+  "format": " {} ",
+  "rewrite": {
+    // Match: nvim (~/some/path)
+ "(nvim)\\s*\\(([^)]*)\\)": "<span color=\"#57A143\"></span>  Nvim in <b>$2</b>",
+    // Match: yazi (~/some/path)
+ "(yazi)\\s*\\(([^)]*)\\)": "<span color=\"#ffcc00\"></span>  Yazi in <b>$2</b>",
+    // Bonus: nano
+ "(nano)\\s*\\(([^)]*)\\)": "<span color=\"#f5c211\"></span>  Nano in <b>$2</b>",
+    // General fallback matches
+    "zsh": "<span color=\"#bbb\"></span>  Shell",
+    "tmux": "<span color=\"#ffaa00\"></span>  tmux"
+  },
+  "separate-outputs": false
+},
+////////////////////////////////////////////////
     "hyprland/submap": {
       "format": "{}",
       "max-length": 8,

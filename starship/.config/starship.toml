@@ -2,9 +2,9 @@ format = """
 [](#9A348E)\
 $os\
 $username\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:#c24a65 fg:#9A348E)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:#c24a65 bg:#FCA17D)\
 $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
@@ -38,7 +38,7 @@ $time\
 show_always = true
 style_user = "bg:#9A348E"
 style_root = "bg:#faf602"
-format = '[$user ]($style)'
+format = '[ $user ]($style)'
 disabled = false
 
 # An alternative to the username module which displays a symbol that
@@ -48,7 +48,7 @@ style = "bg:#9A348E"
 disabled = true # Disabled by default
 
 [directory]
-style = "bg:#DA627D"
+style = "fg:#ffffff bg:#c24a65"
 format = "[ $path ]($style)"
 truncation_length = 5
 truncation_symbol = "…/"
@@ -68,7 +68,7 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#86BBD8"
+style = "fg:#1e1e2e bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
@@ -88,11 +88,11 @@ format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#FCA17D"
+style = "fg:#1d0b96 bg:#FCA17D"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#FCA17D"
+style = "fg:#1d0b96 bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
@@ -142,13 +142,13 @@ format = '[ $symbol ($version) ]($style)'
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "fg:#ffffff bg:#33658A"
 format = '[ $time ]($style)'
 
 [cmd_duration]
 min_time = 0         # Show command duration if it takes more than 500ms
-show_milliseconds = true
-style = "bg:#86BBD8"
+show_milliseconds = false
+style = "fg:#7d1f05 bg:#86BBD8"
 format = "[ ⏱ $duration ]($style)"
 
 

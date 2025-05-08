@@ -366,3 +366,15 @@ update() {
   echo -e "\033[1;34m Checking for updates...\033[0m"
   sudo dnf upgrade --refresh
 }
+
+
+precmd() {
+  print -Pn "\e]0;%n@%m: %~\a"
+}
+
+preexec() {
+  local cmd_name="${1%% *}"
+  local dir="${PWD/#$HOME/~}"  
+  print -Pn "\e]0;$cmd_name ($dir)\a"
+}
+
