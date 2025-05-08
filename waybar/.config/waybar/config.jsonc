@@ -23,20 +23,14 @@
       "custom/powermenu",
     ],
     "tray": {
-      "icon-size": 19,
+      "icon-size": 20,
       "spacing": 12
     },
     "hyprland/window": {
 	 "max-length": 90,
-      "format": " {} ",
-      "rewrite": {
-          "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
-          "nvim (.*)": "<span color=\"#57A143\"></span>  $1",
-          "nvim": "<span color=\"#57A143\">  Neovim</span> ",
-          "ranger(.*)": "<span color=\"#ffffff\"></span>  $1",
-          //"kitty (.*)": "<span color=\"#ffffff\"></span>  $1",
-          "Search(.*)": "<span color=\"#a855f7\"></span>  Search$1",
-      },
+   "format": " {} ", 
+
+
       "separate-outputs": false
     },
     "hyprland/submap": {
