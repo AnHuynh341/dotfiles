@@ -16,7 +16,7 @@
       "network",
       "temperature",
       "cpu",
-      "memory",
+      "battery",
       "pulseaudio",
       "custom/powermenu",
     ],
@@ -65,14 +65,29 @@
       "format": " {bandwidthDownBits}  {bandwidthUpBits}",
     },
     "temperature": {
-      "format": " {icon}  {temperatureC}°C ",
+      "format": " {icon} {temperatureC}°C ",
       "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       "critical-threshold": 80,
       "format-icons": ["", "", ""],
        "interval": 3,
     },
+
+	"battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+        	"format": " {icon} {capacity}% ",
+        	"format-charging": " 󰂄 {capacity}% ",
+        	"format-plugged": " 󰂄 {capacity}% ",
+        	"format-alt": " {time} {icon} ",
+        	"format-full": " 󰁹 {capacity}% ",
+        	"format-icons": ["󰂄", "󰂄", "󰁹"],
+		  "interval": 60,
+	},
+
     "memory": {
-      "format": "   {}% ",
+      "format": " {}% ",
       "tooltip": "false",
         "interval": 5,
     },
