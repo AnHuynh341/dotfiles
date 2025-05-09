@@ -18,13 +18,16 @@
       "temperature",
       "cpu",
       "memory",
-      "battery",
+      "custom/power_battery",
       "pulseaudio",
       "custom/powermenu",
     ],
     "tray": {
       "icon-size": 20,
-      "spacing": 12
+      "spacing": 12,
+    "icons": {
+	    "blueman": "$HOME/.local/share/icons/candy-icons/apps/scalable/preferences-system-bluetooth.svg",
+	},
     },
 ////////////////////////////////////////////////    
 "hyprland/window": {
@@ -32,14 +35,15 @@
   "format": " {} ",
   "rewrite": {
     // Match: nvim (~/some/path)
- "(nvim)\\s*\\(([^)]*)\\)": "<span color=\"#57A143\"></span>  Nvim in <b>$2</b>",
+ "(nvim|NVIM)\\s*\\(([^)]*)\\)": "<span color=\"#57A143\"></span>  Nvim in <b>$2</b>",
     // Match: yazi (~/some/path)
  "(yazi)\\s*\\(([^)]*)\\)": "<span color=\"#ffcc00\"></span>  Yazi in <b>$2</b>",
     // Bonus: nano
  "(nano)\\s*\\(([^)]*)\\)": "<span color=\"#f5c211\"></span>  Nano in <b>$2</b>",
     // General fallback matches
     "zsh": "<span color=\"#bbb\"></span>  Shell",
-    "tmux": "<span color=\"#ffaa00\"></span>  tmux"
+    "tmux": "<span color=\"#ffaa00\"></span>  tmux",
+    "^\\s*$": "<span color=\"#888\">Hyprland</span>"
   },
   "separate-outputs": false
 },
@@ -91,6 +95,8 @@
         	"format-full": " 󰁹 {capacity}% ",
         	"format-icons": ["󰂄", "󰂄", "󰁹"],
 		  "interval": 60,
+		    "tooltip": true,
+    		   "on-click": "~/dotfiles/waybar/.config/waybar/toggle-power.sh"
 	},
 
     "memory": {
@@ -130,5 +136,12 @@
       "interval": 60,
       "tooltip": false,
   //    "tooltip-format": "{:%d %B %H:%M}"
-    }
-}
+    },
+	
+     "custom/power_battery": {
+   	"exec": "~/dotfiles/waybar/.config/waybar/power-battery.sh",
+    	"interval": 1,
+    	"tooltip": true,
+    	"on-click": "~/dotfiles/waybar/.config/waybar/toggle-power.sh"
+	}
+ }

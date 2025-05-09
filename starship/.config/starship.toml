@@ -146,7 +146,7 @@ style = "fg:#ffffff bg:#33658A"
 format = '[ $time ]($style)'
 
 [cmd_duration]
-min_time = 0         # Show command duration if it takes more than 500ms
+min_time = 1000         # Show command duration if it takes more than 500ms
 show_milliseconds = false
 style = "fg:#7d1f05 bg:#86BBD8"
 format = "[ ⏱ $duration ]($style)"

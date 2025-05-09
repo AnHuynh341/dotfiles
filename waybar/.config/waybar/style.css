@@ -58,6 +58,7 @@
 #temperature,
 #memory,
 #battery,
+#custom-power_battery,
 #workspaces,
 #clock,
 #window,
@@ -104,42 +105,49 @@
 
 #pulseaudio {
   color: #0fb9b1;
-  padding-right: 10px;
+  padding-right: 8px;
     font-size: 14px;
 
 }
 
 #cpu {
   color: #81f230;
-     padding-right: 10px;
-  padding-left: 10px;
+     padding-right: 8px;
+  padding-left: 8px;
     font-size: 14px;
 
 }
 
 #temperature {
   color: #d6b0b6;
-    padding-right: 10px;
-  padding-left: 10px;
+    padding-right: 8px;
+  padding-left: 8px;
     font-size: 14px;
 
 }
 
 #memory {
   color: #7ab7d6;
-    padding-right: 10px;
-  padding-left: 10px;
+    padding-right: 8px;
+  padding-left: 8px;
     font-size: 14px;
 
 }
 
 #battery {
   color: #61cf7e;
-    padding-right: 10px;
-  padding-left: 10px;
-    font-size: 14px; 
-
+    padding-right: 8px;
+  padding-left: 8px;
+    font-size: 14px;  	 	
 }
+
+#custom-power_battery {
+  color: #61cf7e;
+    padding-right: 8px;
+  padding-left: 8px;
+    font-size: 14px; 
+}
+
 
 #network {
   color:#d7fc7e;

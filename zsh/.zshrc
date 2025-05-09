@@ -378,3 +378,5 @@ preexec() {
   print -Pn "\e]0;$cmd_name ($dir)\a"
 }
 
+
+export GTK_ICON_THEME=Papirus-Dark
