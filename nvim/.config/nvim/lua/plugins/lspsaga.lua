@@ -7,7 +7,7 @@ return {
   config = function()
     require("lspsaga").setup({
       lightbulb = {
-        enable = true,
+        enable = false,
         enable_in_insert = false,
       },
       symbol_in_winbar = {
