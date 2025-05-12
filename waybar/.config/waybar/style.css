@@ -3,32 +3,32 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  margin: 0;
+  margin-top: 0;
   padding: 0;
 }
 #waybar {
   background-color: transparent;
   color: #eeeeef;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "JetBrainsMono Nerd Font";
 }
 
 #workspaces {
     background: #c4b5b5;
-    margin: 5px 1px 1px 1px;
+    margin: 0px 1px 0px 1px;
    /* padding: 0px 1px; */ 
     border-radius: 15px;
     border: 0px;
     font-weight: bold;
     font-style: normal;
     opacity: 1.0;
-    font-size: 14px;
+    font-size: 12px;
     color: #a4abab;
 }
 
 #workspaces button {
     padding: 0px 5px;
-    margin: 4px 3px;
+    margin: 0px 3px;
     border-radius: 15px;
     border: 0px;
     color: #a2b3b3;
@@ -65,23 +65,19 @@
 #pulseaudio,
 #tray,
 #network {
-  padding: 4px 8px;
+  padding: 4px 6px;
   background-color: #303643;
   border-radius: 30px;
-  margin: 6px 4px;
+  margin: 0px 4px;
   border-style: solid;
   border-width: 2px;
 }
 
 #window {
   color: #b2bfd6;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 #tray {
-  padding-left: 12px;
-  padding-right: 12px;
    color: #8eb6e8;
 }
 
@@ -99,67 +95,54 @@
 
 #scratchpad {
   color: #cffafe;
-  padding-right: 4px;
-  padding-left: 4px;
-}
+  }
 
 #pulseaudio {
   color: #0fb9b1;
-  padding-right: 8px;
-    font-size: 14px;
+     font-size: 12px;
 
 }
 
 #cpu {
   color: #81f230;
-     padding-right: 8px;
-  padding-left: 8px;
-    font-size: 14px;
+     font-size: 12px;
 
 }
 
 #temperature {
   color: #d6b0b6;
-    padding-right: 8px;
-  padding-left: 8px;
-    font-size: 14px;
+      font-size: 12px;
 
 }
 
 #memory {
   color: #7ab7d6;
-    padding-right: 8px;
-  padding-left: 8px;
-    font-size: 14px;
+     font-size: 12px;
 
 }
 
 #battery {
   color: #61cf7e;
-    padding-right: 8px;
-  padding-left: 8px;
-    font-size: 14px;  	 	
+      font-size: 12px;  	 	
 }
 
 #custom-power_battery {
   color: #61cf7e;
-    padding-right: 8px;
-  padding-left: 8px;
-    font-size: 14px; 
+     font-size: 12px; 
 }
 
 
 #network {
   color:#d7fc7e;
   min-width: 200px;
-    font-size: 14px;
+    font-size: 12px;
 
 }
 
 #clock {
   color: #fff;
   margin-left: 8px;
-    font-size: 14px;
+    font-size: 12px;
   /* opacity: 0.7; */
   /* font-size: 18px; */
 }

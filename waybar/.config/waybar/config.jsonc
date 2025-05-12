@@ -1,9 +1,9 @@
 {
   "layer": "top",
     "position": "top",
-    "height": 42,
+    "height": 40,
     "margin-bottom": 0,
-    "margin-top": 0,
+    "margin-top": 5,
     "modules-left": [
       "clock",
       "hyprland/workspaces",
@@ -43,7 +43,7 @@
     // General fallback matches
     "zsh": "<span color=\"#bbb\"></span>  Shell",
     "tmux": "<span color=\"#ffaa00\"></span>  tmux",
-    "^\\s*$": "<span color=\"#888\">Hyprland</span>"
+    "^\\s*$": "<span color=\"#888\"> Hyprland </span>"
   },
   "separate-outputs": false
 },
@@ -116,7 +116,7 @@
     },
     "pulseaudio": {
       "format": " {icon} {volume}% ",
-      "format-bluetooth": "  {volume}% ",
+      "format-bluetooth": "  {volume}% ",
       "format-muted": "",
       "format-icons": {
           "headphone": "",

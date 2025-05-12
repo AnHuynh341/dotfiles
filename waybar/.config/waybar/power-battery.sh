@@ -8,11 +8,12 @@ status=$(cat /sys/class/power_supply/BAT0/status)
 power_mode=$(powerprofilesctl get)
 
 # Define icons (adjust as desired)
-icon_charging="󰂄 "
-icon_full="󰁹 "
-icon_saver="󱤅 "       # Example icon for power-saver
+icon_charging="󰂄"
+icon_full="󰁹"
+icon_saver="󱤅"       # Example icon for power-saver
 icon_balanced=" "    # Example icon for balanced
-icon_performance="󰓅 " # Example icon for performance
+icon_performance="󰓅" # Example icon for performance
+icon_low="󱉞"
 
 # Select icon based on power mode
 case $power_mode in
@@ -25,9 +26,9 @@ esac
 # Override icon if charging/full
 #if [ "$status" = "Charging" ]; then
 #    icon="$icon_charging"
-#elif [ "$capacity" -ge 98 ]; then
-#    icon="$icon_full"
-#fi
+if [ "$capacity" -lt 30 ]; then
+    icon="$icon_low"
+fi
 
 # Output JSON
-echo " $icon $capacity% "
+echo " $icon  $capacity% "
