@@ -13,35 +13,57 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
-      -- Automatically install & configure LSPs using mason-lspconfig
+      local lspconfig = require("lspconfig")
+
       require("mason-lspconfig").setup {
         ensure_installed = {
           "lua_ls", -- Lua LSP
           "clangd", -- C/C++ LSP
-          "html", -- HTML LSP
+          "html",
           "cssls",
           "bashls",
           "pyright",
         },
-        automatic_installation = true, -- Automatically install missing servers
+        handlers = {
+          -- Default handler for all other servers
+          function(server_name)
+            lspconfig[server_name].setup {}
+          end,
+
+          -- Optional: specific config for Lua
+          ["lua_ls"] = function()
+            lspconfig.lua_ls.setup {
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                },
+              },
+            }
+          end,
+        },
       }
 
-      local lspconfig = require("lspconfig")
-
-      -- Automatically setup Mason-managed LSPs
-      require("mason-lspconfig").setup_handlers {
-        -- Default handler for Mason-managed servers
-        function(server_name)
-          lspconfig[server_name].setup {}
-        end,
-      }
-
-      -- original, working dartls setup (outside mason-lspconfig)
+      -- Original dartls setup (outside Mason)
       lspconfig.dartls.setup {
         cmd = { "/home/AnHuynh/development/flutter/bin/dart", "language-server", "--protocol=lsp" },
         filetypes = { "dart" },
         root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
       }
+
+        --  Inline virtual text diagnostics
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = "●",  -- Or use ">>", "→", etc. for fun
+        spacing = 4,
+      },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+    })
+
     end,
   },
 
@@ -50,3 +72,4 @@ return {
     "neovim/nvim-lspconfig",
   },
 }
+
