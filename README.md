@@ -10,7 +10,10 @@
 > fzf
 > yazi
 > fastfetch
-> tmux (optional)
-> ncmpcpp (optional)
-> cava (optional)
+> rofi
+> wlogout
+> tmux
+> ncmpcpp
+> cava
+> mpv
 
