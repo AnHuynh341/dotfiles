@@ -13,6 +13,7 @@
   margin-right: 13px;
   margin-top: 8px;
   border-radius: 80px;
+  padding-bottom: 10px;
 }
 
 .control-center .notification-row:focus,
@@ -33,7 +34,7 @@
 }
 
 .control-center .notification-row {
-	opacity: 0.5;
+	opacity: 0.9;
 	margin: -5px;
 }
 
@@ -144,7 +145,7 @@
 }
 
 .summary {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   background: transparent;
   color: @foreground;
@@ -152,7 +153,7 @@
 }
 
 .time {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   background: transparent;
   color: @foreground;
@@ -161,7 +162,7 @@
 }
 
 .body {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: normal;
   background: transparent;
   color: @foreground;
@@ -232,7 +233,7 @@
 /* Title widget */
 .widget-title {
   margin: 8px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .widget-title > button {
   font-size: initial;
@@ -250,7 +251,7 @@
 /* DND widget */
 .widget-dnd {
   margin: 8px;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .widget-dnd > switch {
   font-size: initial;
@@ -273,7 +274,7 @@
   margin: 8px;
 }
 .widget-label > label {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* Mpris widget */
@@ -290,8 +291,8 @@
 }
 .widget-mpris-title {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 .widget-mpris-subtitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
