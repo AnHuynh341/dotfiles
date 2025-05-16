@@ -16,4 +16,4 @@
 > ncmpcpp
 > cava
 > mpv
-
+> cliphist
