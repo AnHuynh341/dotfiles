@@ -18,7 +18,7 @@
 
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
-	opacity: 1;
+	opacity: 0.8;
 	background: transparent;
 }
 
@@ -226,7 +226,7 @@
 /* Window behind control center and on all other monitors */
 .blank-window {
   background: transparent;
-}
+  }
 
 /*** Widgets ***/
 

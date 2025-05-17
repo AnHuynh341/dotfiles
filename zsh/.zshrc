@@ -380,3 +380,17 @@ preexec() {
 
 
 export GTK_ICON_THEME=Papirus-Dark
+
+
+fix-chrome() {
+    local chrome_config="$HOME/.config/google-chrome"
+    if pgrep chrome > /dev/null; then
+        echo "Chrome is still running. Please close it before running this."
+        return 1
+    fi
+    echo "Removing Chrome profile lock files..."
+    rm -f "$chrome_config/SingletonLock" \
+          "$chrome_config/SingletonSocket" \
+          "$chrome_config/SingletonCookie"
+    echo "Done. Chrome lock cleared."
+}

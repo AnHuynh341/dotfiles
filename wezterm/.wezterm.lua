@@ -3,8 +3,8 @@ local wezterm = require 'wezterm'
 return {
   font = wezterm.font_with_fallback {
     "JetBrainsMono Nerd Font",
+    "SpaceMono Nerd Font Mono",
     "Fira Code",
-    "monospace",
   },
 
   keys = {
@@ -23,7 +23,7 @@ return {
   window_background_opacity = 0.80,  -- 1.0 = fully opaque
   enable_tab_bar = false,
   use_fancy_tab_bar = false,
-  hide_mouse_cursor_when_typing = false,
+  hide_mouse_cursor_when_typing = true,
 
   window_padding = {
     left = 8,

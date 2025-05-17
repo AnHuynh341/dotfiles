@@ -6,13 +6,13 @@
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "~/dotfiles/wlogout/.config/wlogout/scripts/shutdown.sh",
     "keybind" : "s",
     "text" : "Shutdown"
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "~/dotfiles/wlogout/.config/wlogout/scripts/reboot.sh",
     "keybind" : "r",
     "text" : "Reboot"
 }
