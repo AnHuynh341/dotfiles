@@ -31,7 +31,7 @@ unset rc
 #alias ls='eza -lah --icons --group-directories-first --no-user --no-permissions --header  --color=always '
 alias btop=' wezterm start -- btop &'
 alias ls=" eza -a --icons --group-directories-first --grid --color=always"
-alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
+#alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
 alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
@@ -394,3 +394,51 @@ fix-chrome() {
           "$chrome_config/SingletonCookie"
     echo "Done. Chrome lock cleared."
 }
+
+
+chrome() {
+    echo "Opening Chrome..."
+    local chrome_config="$HOME/.config/google-chrome"
+
+    # Try launching Chrome *in the background*, and don't capture output
+    google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 &
+     disown
+
+    # Give Chrome a moment to show its behavior
+    sleep 2
+
+    if pgrep -x chrome > /dev/null; then
+        echo "Chrome launched successfully."
+        return 0
+    fi
+
+    # Chrome failed — let's try to capture error by running it in the foreground temporarily
+    local output
+    output=$(google-chrome-stable --enable-wayland-ime 2>&1)
+
+    # Detect profile lock
+    if echo "$output" | grep -q "The profile appears to be in use"; then
+        echo "Chrome profile is locked. Checking if it's safe to unlock..."
+
+        if pgrep -x chrome > /dev/null; then
+            echo "Chrome is still running. Please close it before unlocking the profile."
+            return 1
+        fi
+
+        echo "No running Chrome process found. Unlocking profile..."
+
+        rm -f "$chrome_config/SingletonLock" \
+              "$chrome_config/SingletonSocket" \
+              "$chrome_config/SingletonCookie"
+
+        echo "Lock files removed. Relaunching Chrome..."
+        google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown
+        echo "Chrome relaunched."
+        return 0
+    fi
+
+    echo "❌ Error launching Chrome:"
+    echo "$output"
+    return 1
+}
+
