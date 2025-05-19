@@ -9,6 +9,6 @@ return {
   { import = "plugins.lspsaga" },
   { import = "plugins.symbols-outline" },
   { import = "plugins.nvim-autopairs" },
-  { import = "plugins.indent-blankline" },
+ -- { import = "plugins.indent-blankline" },
 }
 
