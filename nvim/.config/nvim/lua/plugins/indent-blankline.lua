@@ -3,9 +3,8 @@ return {
   main = "ibl",
   config = function()
     local highlights = {
-      "#b0b0b0", "#a0a0b8", "#9090c0", "#8080c8", "#7070d0",
-      "#6060d8", "#5050e0", "#4040e8", "#3030f0", "#2020f8"
-    }
+      "#878787", "#8d8d8f", "#7d7d7d", "#737272", "#727275",
+         }
 
     for i, color in ipairs(highlights) do
       vim.api.nvim_set_hl(0, "IblIndent" .. i, { fg = color, nocombine = true })
@@ -14,7 +13,7 @@ return {
     require("ibl").setup {
       indent = {
         char = "│",
-        highlight = vim.tbl_map(function(i) return "IblIndent" .. i end, vim.fn.range(1, 10)),
+        highlight = vim.tbl_map(function(i) return "IblIndent" .. i end, vim.fn.range(1, 5)),
       },
       scope = {
         enabled = false,

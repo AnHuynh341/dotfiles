@@ -37,8 +37,10 @@ alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 #alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
-
 alias prand="~/push_random.sh"
+alias yazi='wezterm start --class yazi -- yazi &'
+
+
 
 # Set up fzf key bindings and fuzzy completion
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
