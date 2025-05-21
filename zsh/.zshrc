@@ -38,7 +38,7 @@ alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 #alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias prand="~/push_random.sh"
-alias yazi='wezterm start --class yazi -- yazi &'
+alias yazii='wezterm start --class yazi -- yazi &'
 
 
 
@@ -357,9 +357,8 @@ gitpush() {
 yaz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
 
