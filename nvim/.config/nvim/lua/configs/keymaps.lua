@@ -8,6 +8,7 @@
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
 --vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 --vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+vim.keymap.set('n', 'q', '<Nop>', { noremap = true, silent = true })
 
 
 -- Modern clipboard shortcuts for a comfy experience
