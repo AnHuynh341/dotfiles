@@ -19,6 +19,7 @@
       "cpu",
       "memory",
       "custom/power_battery",
+      "custom/power_monitor",
       "pulseaudio",
       "custom/powermenu",
     ],
@@ -143,5 +144,14 @@
     	"interval": 1,
     	"tooltip": true,
     	"on-click": "~/dotfiles/waybar/.config/waybar/toggle-power.sh"
-	}
- }
+	},
+
+
+ "custom/power_monitor": {
+  "exec": "sudo /home/AnHuynh/dotfiles/waybar/.config/waybar/pow_mon.sh",
+  "interval": 1,
+  "return-type": "json",
+  "format": "{}"
+}
+
+}
