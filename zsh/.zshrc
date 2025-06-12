@@ -39,6 +39,8 @@ alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias prand="~/push_random.sh"
 alias yazii='wezterm start --class yazi -- yazi &'
+alias watchdirt='watch -n 1 grep Dirty /proc/meminfo'
+
 
 
 

@@ -19,14 +19,14 @@ if [ "$ac_online" -eq 0 ]; then
     # On battery – use battery reading
     energy_now=$(cat "$battery_path/energy_now" 2>/dev/null || echo 0)
     energy_total=$(awk "BEGIN { printf \"%.2f\", $energy_now / 1000000 }")  # mWh -> Wh
-    source_icon=" 󱊣 "
+    source_icon=" 󱩘 "
     energy_unit="Wh"
 else
     # On AC – use RAPL
     if [[ -r "$rapl_path" ]]; then
         energy_uj=$(cat "$rapl_path")
         energy_total=$(awk "BEGIN { printf \"%.2f\", $energy_uj / 3600000000 }")  # µJ -> Wh
-        source_icon=" "
+        source_icon=" 󱩗 "
         energy_unit="Wh"
     else
         source_icon="❓"
