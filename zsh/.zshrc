@@ -40,7 +40,7 @@ alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -
 alias prand="~/push_random.sh"
 alias yazii='wezterm start --class yazi -- yazi &'
 alias watchdirt='watch -n 1 grep Dirty /proc/meminfo'
-
+alias rename=prename
 
 
 
