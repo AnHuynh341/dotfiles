@@ -32,7 +32,7 @@ unset rc
 alias btop=' wezterm start -- btop &'
 alias ls=" eza -a --icons --group-directories-first --grid --color=always"
 #alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
-alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
+#alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
 #alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
@@ -443,5 +443,22 @@ chrome() {
     echo "❌ Error launching Chrome:"
     echo "$output"
     return 1
+}
+
+
+clean() {
+  echo "Cleaning DNF cache..."
+  sudo dnf clean all
+  sudo dnf autoremove -y 
+
+  echo "Cleaning journal logs..."
+  sudo journalctl --vacuum-time=2weeks
+
+  echo "Cleaning cache and trash..."
+  rm -rf ~/.local/share/Trash/* 
+  rm -rf ~/.cache/thumbnails/*  
+  rm -rf ~/.cache/* 
+
+  echo "Done!"
 }
 
