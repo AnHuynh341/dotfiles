@@ -26,10 +26,12 @@
 
 
  
-#command
+#commands-and-tools
   #file-transfer
     rsync -avh --progress ~/source/ ~/destination/ && sync
-
+  #gdown (download from google drive)
+    1. change the file link to gdown format: 'https://drive.google.com/uc?id=<file id>'
+    2. gdown -c <link> -O /path/do/file/
 
 
 #UEFI-GRUB-Recovery
