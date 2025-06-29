@@ -12,10 +12,6 @@ source $MY_ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # User specific aliases and functions
 # Run scripts in ~/.bashrc.d (if any)
 if [ -d ~/.bashrc.d ]; then
@@ -27,15 +23,13 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# Aliases (Zsh-specific formatting)
-#alias ls='eza -lah --icons --group-directories-first --no-user --no-permissions --header  --color=always '
+# Aliases 
 alias btop=' wezterm start -- btop &'
 alias ls=" eza -a --icons --group-directories-first --grid --color=always"
 #alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
 #alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
-#alias fzb='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias prand="~/push_random.sh"
 alias yazii='wezterm start --class yazi -- yazi &'
@@ -44,10 +38,9 @@ alias rename=prename
 
 
 
-# Set up fzf key bindings and fuzzy completion
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-#alias ncm='kitty --class=ncmpcpp -e ncmpcpp &'
+
 
 
 
@@ -63,22 +56,16 @@ ncmp() {
   {
     local music_dir="/mnt/localdisk/Audio"
     local file rel_path
-
     if [ -n "$1" ]; then
       rel_path="$1"
     else
       file=$(find "$music_dir" \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.dsf" -o -iname "*.mka" \) -type f 2>/dev/null | fzf)
-
       [ -z "$file" ] && return
       rel_path="${file#"$music_dir/"}"
     fi
-
-   	# mpc add "$rel_path" && mpc play
-	# Add to the queue and fetch its position
-	mpc add "$rel_path"
-	song_pos=$(mpc playlist | wc -l)
-	mpc play "$song_pos"
-
+      mpc add "$rel_path"
+      song_pos=$(mpc playlist | wc -l)
+      mpc play "$song_pos"
 
     if [ -n "$TMUX" ]; then
       # Count the number of panes
@@ -112,8 +99,9 @@ ncmp() {
       # Outside tmux fallback
       if ! pgrep -x "ncmpcpp" > /dev/null; then
        # kitty --class=ncmpcpp -e ncmpcpp &
-	wezterm start --class ncmpcpp -- ncmpcpp &
+       wezterm start --class ncmpcpp -- ncmpcpp &
       fi
+
       if ! pgrep -x "cava" > /dev/null; then
        # kitty --class=cava -e cava &
         wezterm start --class cava -- cava &
@@ -185,9 +173,7 @@ btopp() {
 
 ncm() {
   {
- 
-	  mpc play
-
+    mpc play
     if [ -n "$TMUX" ]; then
       # Count the number of panes
       local num_panes
@@ -206,8 +192,7 @@ ncm() {
         echo "ncmpcpp is already running in tmux"
       fi
 
-      # Now check and launch cava if not running
-
+     
          if ! tmux list-panes -a -F '#{pane_current_command}' | grep -q "^cava$"; then
         local bottom_pane
         bottom_pane=$(tmux list-panes -F '#{pane_id} #{pane_top}' | sort -k2 -nr | head -n1 | cut -d' ' -f1)
@@ -217,10 +202,9 @@ ncm() {
       fi
 
     else
-      # Outside tmux fallback
       if ! pgrep -x "ncmpcpp" > /dev/null; then
        # kitty --class=ncmpcpp -e ncmpcpp &
-	wezterm start --class ncmpcpp -- ncmpcpp &
+       wezterm start --class ncmpcpp -- ncmpcpp &
       fi
       if ! pgrep -x "cava" > /dev/null; then
        # kitty --class=cava -e cava &
@@ -234,16 +218,15 @@ ncm() {
 
 
 ncmo() {
-		mpc play 
-	     # Outside tmux fallback
+      mpc play 
       if ! pgrep -x "ncmpcpp" > /dev/null; then
        # kitty --class=ncmpcpp -e ncmpcpp &
-	wezterm start --class ncmpcpp -- ncmpcpp &
+       wezterm start --class ncmpcpp -- ncmpcpp &
       fi
       if ! pgrep -x "cava" > /dev/null; then
        # kitty --class=cava -e cava &
        sleep 0.75
-        wezterm start --class cava -- cava &
+       wezterm start --class cava -- cava &
       fi
 
 }
@@ -316,8 +299,7 @@ export LS_COLORS="${LS_COLORS}ow=1;33:"
 eval "$(starship init zsh)"
 
 
-# Optional: Run neofetch (if desired) – remove if you want to avoid it on startup
- fastfetch
+fastfetch
 
 
 
@@ -382,7 +364,6 @@ preexec() {
 }
 
 
-export GTK_ICON_THEME=Papirus-Dark
 
 
 fix-chrome() {
@@ -402,12 +383,8 @@ fix-chrome() {
 chrome() {
     echo "Opening Chrome..."
     local chrome_config="$HOME/.config/google-chrome"
-
-    # Try launching Chrome *in the background*, and don't capture output
     google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 &
      disown
-
-    # Give Chrome a moment to show its behavior
     sleep 2
 
     if pgrep -x chrome > /dev/null; then
@@ -415,12 +392,10 @@ chrome() {
         return 0
     fi
 
-    # Chrome failed — let's try to capture error by running it in the foreground temporarily
     local output
     output=$(google-chrome-stable --enable-wayland-ime 2>&1)
 
-    # Detect profile lock
-    if echo "$output" | grep -q "The profile appears to be in use"; then
+      if echo "$output" | grep -q "The profile appears to be in use"; then
         echo "Chrome profile is locked. Checking if it's safe to unlock..."
 
         if pgrep -x chrome > /dev/null; then
