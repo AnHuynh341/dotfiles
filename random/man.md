@@ -32,6 +32,9 @@
   #gdown (download from google drive)
     1. change the file link to gdown format: 'https://drive.google.com/uc?id=<file id>'
     2. gdown -c <link> -O /path/do/file/
+  #batch-rename
+    rename 's/old/new/' files  
+    rename 's/^.{3}//' *          (trim first 3 characters)
 
 
 #UEFI-GRUB-Recovery
