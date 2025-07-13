@@ -30,7 +30,16 @@ alias ls=" eza -a --icons --group-directories-first --grid --color=always"
 #alias cleanup='sudo dnf autoremove && sudo dnf clean all && sudo journalctl --vacuum-time=7d'
 alias stress-test='stress-ng --cpu 0 --cpu-method all --verify --timeout 30s'
 alias mhz='watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"'
-alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+#alias fzb='find ~ \( -path ~/.android -o -path ~/development -o -path ~/.cache -o -path ~/.dartServer -o -path ~/.gradle \) -prune -o -type f -print | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+#alias fzb='fd --type f | fzf --preview "bat --style=numbers --color=always --line-range :500 {}" --bind "enter:execute(nvim {})"'
+alias fzb='fd --type f --hidden \
+    --exclude .cache --exclude .gradle --exclude .dartServer --exclude .android \
+    --exclude "*.png" --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.gif" \
+    --exclude "*.webp" --exclude "*.mp4" --exclude "*.mp3" --exclude "*.wav" \
+    --exclude "*.avi" --exclude "*.mkv" --exclude "*.iso" --exclude "*.sqlite" \
+    --exclude "*.zip" --exclude "*.tar" --exclude "*.gz" --exclude "*.7z" \
+    | fzf --preview "bat --style=numbers --color=always --line-range :500 {}" \
+          --bind "enter:execute(nvim {})"'
 alias prand="~/push_random.sh"
 alias yazii='wezterm start --class yazi -- yazi &'
 alias watchdirt='watch -n 1 grep Dirty /proc/meminfo'
