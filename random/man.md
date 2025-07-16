@@ -20,7 +20,11 @@
      alt + arrow: switch pane
      ctrl + alt + up/down: swap pane 
      shift + tab: switch window
-
+     
+     commands:
+     1. tmux list-sessions
+     2. tmux list-windows -a 
+     3. tmux kill-window -t -session_name:#widow_number
   
 
 

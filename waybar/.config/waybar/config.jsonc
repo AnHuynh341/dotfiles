@@ -26,9 +26,6 @@
     "tray": {
       "icon-size": 20,
       "spacing": 12,
-    "icons": {
-	    "blueman": "$HOME/.local/share/icons/candy-icons/apps/scalable/preferences-system-bluetooth.svg",
-	},
     },
 ////////////////////////////////////////////////    
 "hyprland/window": {
