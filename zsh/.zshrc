@@ -437,6 +437,9 @@ clean() {
 
   echo "Cleaning journal logs..."
   sudo journalctl --vacuum-time=2weeks
+  sudo journalctl --vacuum-size=50M
+  sudo rm /var/log/messages-*
+
 
   echo "Cleaning cache and trash..."
   rm -rf ~/.local/share/Trash/* 
