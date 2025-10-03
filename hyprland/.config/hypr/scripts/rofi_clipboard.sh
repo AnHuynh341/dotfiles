@@ -1,21 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Create a temporary map file
-mapfile=$(mktemp)
+# Show "ID<TAB>TEXT" directly, let the user choose one full line
+line="$(cliphist list | rofi -dmenu -i -p 'Clipboard')"
+[ -z "${line:-}" ] && exit 0
 
-# Build the list: clipboard content → store ID in a file
-cliphist list | while read -r id rest; do
-    echo "$rest" >> "$mapfile"
-done
+# Extract the ID (cliphist uses a TAB between ID and text)
+id="$(printf '%s' "$line" | cut -f1 -d $'\t')"
+# Fallback in case the separator isn't a tab on your system:
+[ -n "$id" ] || id="${line%% *}"
 
-# Let the user choose an entry
-selected=$(cat "$mapfile" | rofi -dmenu -i -p "Clipboard")
+# Decode and set CLIPBOARD (no trailing newline)
+cliphist decode "$id" | wl-copy -n
 
-# Get the corresponding ID
-id=$(cliphist list | awk -v sel="$selected" '$0 ~ sel {print $1; exit}')
+# Optional: also set PRIMARY for middle-click paste
+# data="$(cliphist decode "$id")"
+# printf '%s' "$data" | wl-copy -n
+# printf '%s' "$data" | wl-copy -n -p
 
-# Decode and copy it
-[ -n "$id" ] && cliphist decode "$id" | wl-copy
-
-# Clean up
-rm "$mapfile"
