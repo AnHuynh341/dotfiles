@@ -6,6 +6,10 @@ esac
 
 export PATH
 
+/usr/bin/keychain --quiet ~/.ssh/id_rsa
+source $HOME/.keychain/$HOSTNAME-sh
+
+
 #zsh autosuggest setup
 export MY_ZSH_PLUGINS=~/dotfiles/zsh/plugins 
 source $MY_ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+
+# Explicit environment for cron
+export HOME="/home/AnHuynh"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# Point to systemd’s persistent ssh-agent socket
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+
 REPO_PATH="$HOME/e5"
 LOG_FILE="$REPO_PATH/noreply.txt"
 
@@ -72,8 +81,10 @@ echo "Uptime: $(uptime -p)" >> "$LOG_FILE"
 #echo "Mood: $(shuf -n 1 <<< $'Functional\nSurviving\nRunning on caffeine\nConsidering quitting\nJust vibes')" >> "$LOG_FILE"
 echo "" >> "$LOG_FILE"
 
+echo "$(date) - Ran commit logic" >> /home/AnHuynh/cron-debug.log
+
 cd "$REPO_PATH"
 git add .
 git commit -m "update $TODAY $NOW_HM"
-git push
+git push origin main
 
