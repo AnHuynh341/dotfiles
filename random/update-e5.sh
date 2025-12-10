@@ -5,8 +5,17 @@
 export HOME="/home/AnHuynh"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# Point to systemd’s persistent ssh-agent socket
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+#export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-$XDG_RUNTIME_DIR/ssh-agent.socket}"
+
+[ -z "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+
+# Auto-start ssh-agent and load key if not already loaded (cron-safe)
+if ! ssh-add -l >/dev/null 2>&1; then
+    eval "$(ssh-agent -s)" >/dev/null
+    ssh-add "$HOME/.ssh/id_ed25519" 2>/dev/null || ssh-add "$HOME/.ssh/id_rsa" 2>/dev/null
+fi
 
 
 REPO_PATH="$HOME/e5"
@@ -42,10 +51,8 @@ is_holiday() {
 }
 
 if [[ $WEEKDAY -gt 5 ]]; then
-  if [[ $WEEKDAY -eq 6 && $NOW_HM == "21:38" ]]; then
-    :
-  else
-    exit 0
+  if [[ $WEEKDAY -eq 6 ]]; then
+    true
   fi
 fi
 
