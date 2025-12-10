@@ -36,5 +36,8 @@ return {
 
   enable_wayland = true,
 
+ warn_about_missing_glyphs = false,
+
+
 }
 
