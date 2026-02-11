@@ -6,8 +6,8 @@ esac
 
 export PATH
 
-/usr/bin/keychain --quiet ~/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+# /usr/bin/keychain --quiet ~/.ssh/id_rsa
+# source $HOME/.keychain/$HOSTNAME-sh
 
 
 #zsh autosuggest setup
@@ -443,6 +443,8 @@ clean() {
   sudo journalctl --vacuum-time=2weeks
   sudo journalctl --vacuum-size=50M
   sudo rm /var/log/messages-*
+  sudo rm /var/log/secure-*
+
 
 
   echo "Cleaning cache and trash..."
