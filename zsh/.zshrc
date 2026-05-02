@@ -28,6 +28,7 @@ fi
 unset rc
 
 # Aliases 
+alias powermode='cat /sys/class/power_supply/AC*/online && echo "AC plugged" || echo "Battery" '
 alias btop=' wezterm start -- btop &'
 alias ls=" eza -a --icons --group-directories-first --grid --color=always"
 #alias chrome='google-chrome-stable --enable-wayland-ime > /dev/null 2>&1 & disown'
